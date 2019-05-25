@@ -1,0 +1,43 @@
+enum UserRole {
+  ADMIN
+  USER
+}
+
+type User {
+  id: ID! @id
+  email: String! @unique
+
+  role: UserRole!
+
+  wishlists: [Wishlist!]!
+}
+
+type Wishlist {
+  id: ID! @id
+  name: String! @rename(oldName: "title")
+
+  isPrivate: Boolean!
+
+  owner: User!
+  products: [Product!]!
+
+  tags: [String!]! @scalarList(strategy: RELATION)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Product {
+  id: ID! @id
+
+  name: String!
+  description: String
+
+  # как валидировать поле url что это действительно url
+  url: String
+
+  price: Float! @default(value: 0.0)
+  discont: Float! @default(value: 0.0)
+
+  wishlist: Wishlist!
+}

@@ -1,0 +1,13 @@
+{
+  "name": "prisma-summary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "prisma": "^1.33.0"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.0.3",
+    "joi": "^14.3.1"
+  }
+}
